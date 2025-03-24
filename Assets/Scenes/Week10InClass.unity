@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 282904326}
   - component: {fileID: 282904325}
   - component: {fileID: 282904324}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ Transform:
   m_GameObject: {fileID: 282904323}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.8, y: 0.5, z: 0}
+  m_LocalPosition: {x: -3.5, y: 0.5, z: 17.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -368,23 +368,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parentBlackboard: {fileID: 0}
   _serializedBlackboard: '{"_variables":{"guardTransform":{"_value":1,"_name":"guardTransform","_id":"bb092c7e-f3ab-45fb-a114-74dbe60017b1","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"playerTransform":{"_value":2,"_name":"playerTransform","_id":"d65bed61-f73c-492f-9b78-1d7183c7a685","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"targetTransform":{"_name":"targetTransform","_id":"d65bed61-f73c-492f-9b78-1d7183c7a685","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
   _objectReferences:
   - {fileID: 0}
   - {fileID: 1543301662}
-  - {fileID: 282904327}
   _serializedVariables:
   - _json: '{"_value":1,"_name":"guardTransform","_id":"bb092c7e-f3ab-45fb-a114-74dbe60017b1","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references:
     - {fileID: 0}
     - {fileID: 1543301662}
-  - _json: '{"_value":1,"_name":"playerTransform","_id":"d65bed61-f73c-492f-9b78-1d7183c7a685","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+  - _json: '{"_name":"targetTransform","_id":"d65bed61-f73c-492f-9b78-1d7183c7a685","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-    _references:
-    - {fileID: 0}
-    - {fileID: 282904327}
+    _references: []
 --- !u!114 &920059499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,12 +395,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"dynamic":true,"_position":{"x":476.7428,"y":7.868803},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"0"},{"dynamic":true,"_position":{"x":284.9309,"y":134.5436},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"1"},{"_condition":{"guardTransform":{"_value":1},"playerTransform":{"_value":2},"distanceToDetect":{"_value":5.0},"$type":"NodeCanvas.Tasks.Conditions.CheckDistanceCT"},"_position":{"x":86.35655,"y":270.3332},"_comment":"","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"2"},{"_action":{"targetColor":{"r":1.0,"a":1.0},"renderer":3,"$type":"NodeCanvas.Tasks.Actions.ColourChangeAT"},"_position":{"x":349.6693,"y":271.3187},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_position":{"x":635.9178,"y":137.3156},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"4"},{"_action":{"navAgent":4,"patrolLocation":5,"$type":"NodeCanvas.Tasks.Actions.PatrolAT"},"_position":{"x":566.7102,"y":271.3803},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"5"},{"_action":{"navAgent":4,"patrolLocation":6,"$type":"NodeCanvas.Tasks.Actions.PatrolAT"},"_position":{"x":740.5345,"y":266.5909},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"6"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
+  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"dynamic":true,"_position":{"x":476.7428,"y":7.868803},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"0"},{"dynamic":true,"_position":{"x":284.9309,"y":134.5436},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"1"},{"_condition":{"agentTransform":{"_name":"guardTransform","_targetVariableID":"bb092c7e-f3ab-45fb-a114-74dbe60017b1"},"targetTransform":{"_name":"targetTransform","_targetVariableID":"d65bed61-f73c-492f-9b78-1d7183c7a685"},"distanceToDetect":{"_value":10.0},"detectionLayerMask":{"value":8},"$type":"NodeCanvas.Tasks.Conditions.DetectionCT"},"_position":{"x":86.35655,"y":270.3332},"_comment":"","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"2"},{"_action":{"targetTransform":{"_name":"targetTransform","_targetVariableID":"d65bed61-f73c-492f-9b78-1d7183c7a685"},"navMeshAgent":1,"distanceToDetect":{"_value":10.0},"detectionLayerMask":{"value":8},"$type":"NodeCanvas.Tasks.Actions.ChaseAT"},"_position":{"x":349.6693,"y":273.5103},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_position":{"x":635.9178,"y":137.3156},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"4"},{"_action":{"navAgent":1,"patrolLocation":2,"$type":"NodeCanvas.Tasks.Actions.PatrolAT"},"_position":{"x":565.6144,"y":261.5182},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"5"},{"_action":{"navAgent":1,"patrolLocation":3,"$type":"NodeCanvas.Tasks.Actions.PatrolAT"},"_position":{"x":740.5345,"y":266.5909},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"6"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
   _boundGraphObjectReferences:
   - {fileID: 0}
-  - {fileID: 1543301662}
-  - {fileID: 282904327}
-  - {fileID: 1788743846}
   - {fileID: 1543301663}
   - {fileID: 1834367584}
   - {fileID: 1553505484}
@@ -411,7 +405,7 @@ MonoBehaviour:
     _version: 3.31
     _category: 
     _comments: 
-    _translation: {x: -46, y: 128}
+    _translation: {x: 80, y: 182}
     _zoomFactor: 0.9125831
   _firstActivation: 0
   _enableAction: 0
@@ -659,6 +653,111 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1564471587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1564471591}
+  - component: {fileID: 1564471590}
+  - component: {fileID: 1564471589}
+  - component: {fileID: 1564471588}
+  m_Layer: 3
+  m_Name: Player (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1564471588
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564471587}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1564471589
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564471587}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1564471590
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564471587}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1564471591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564471587}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.21, y: 0.5, z: -69.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -913,6 +1012,7 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 1543301662}
   - {fileID: 282904327}
+  - {fileID: 1564471591}
   - {fileID: 1349092474}
   - {fileID: 1834367584}
   - {fileID: 1553505484}

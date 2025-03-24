@@ -6,7 +6,10 @@ namespace NodeCanvas.Tasks.Actions {
 
 	public class ColourChangeAT : ActionTask {
 
-		Color startColor;
+		public BBParameter<float> scanRange;
+        public BBParameter<float> distanceToTarget;
+
+        Color startColor;
 		public Color targetColor = Color.white;
 		public Renderer renderer;
 

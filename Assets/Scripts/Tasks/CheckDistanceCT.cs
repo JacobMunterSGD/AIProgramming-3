@@ -6,8 +6,8 @@ namespace NodeCanvas.Tasks.Conditions {
 
 	public class CheckDistanceCT : ConditionTask {
 
-		public BBParameter<Transform> guardTransform;
-        public BBParameter<Transform> playerTransform;
+		public BBParameter<Transform> agentTransform;
+        public BBParameter<Transform> targetTransform;
 
 		public BBParameter<float> distanceToDetect;
 
@@ -15,7 +15,8 @@ namespace NodeCanvas.Tasks.Conditions {
 			return null;
 		}
 		protected override bool OnCheck() {
-			if (Vector3.Distance(playerTransform.value.position, guardTransform.value.position) < distanceToDetect.value) return true;
+
+            if (Vector3.Distance(targetTransform.value.position, agentTransform.value.position) < distanceToDetect.value) return true;
 			else return false;
 		}
 	}
