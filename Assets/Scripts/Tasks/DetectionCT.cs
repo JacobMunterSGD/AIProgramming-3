@@ -52,3 +52,28 @@ namespace NodeCanvas.Tasks.Conditions {
         }
 	}
 }
+
+
+//int maxColliders = 10;
+//Collider[] hitColliders = new Collider[maxColliders];
+//int numColliders = Physics.OverlapSphereNonAlloc(agent.transform.position, distanceToDetect.value, hitColliders, detectionLayerMask);
+
+//Collider closestCollider = hitColliders[0];
+
+//for (int i = 0; i < numColliders; i++)
+//{
+//    if (Vector3.Distance(closestCollider.transform.position, agent.transform.position) > Vector3.Distance(hitColliders[i].transform.position, agent.transform.position))
+//    {
+//        closestCollider = hitColliders[i];
+//    }
+//}
+
+////Debug.Log(targetTransform.value != closestCollider.transform.position);
+
+//if (closestCollider == null) return;
+
+//if (targetTransform.value != closestCollider.transform.position)
+//{
+//    Debug.Log(closestCollider.transform.position);
+//    targetTransform.value = closestCollider.transform.position;
+//}

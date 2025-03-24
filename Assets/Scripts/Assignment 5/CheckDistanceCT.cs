@@ -8,15 +8,20 @@ namespace NodeCanvas.Tasks.Conditions {
 
 		public BBParameter<Transform> agentTransform;
         public BBParameter<Transform> targetTransform;
+        public BBParameter<Transform> currentTarget;
 
-		public BBParameter<float> distanceToDetect;
+        public BBParameter<float> distanceToDetect;
 
         protected override string OnInit(){
 			return null;
 		}
 		protected override bool OnCheck() {
 
-            if (Vector3.Distance(targetTransform.value.position, agentTransform.value.position) < distanceToDetect.value) return true;
+            if (Vector3.Distance(targetTransform.value.position, agentTransform.value.position) < distanceToDetect.value)
+			{
+				currentTarget.value = targetTransform.value;
+                return true;
+			}
 			else return false;
 		}
 	}
