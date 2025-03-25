@@ -18,6 +18,7 @@ namespace NodeCanvas.Tasks.Actions {
 		protected override void OnExecute() {
 
 			Vector3 wanderTarget = new Vector3(Random.Range(-wanderRadius.value, wanderRadius.value), agent.transform.position.y, Random.Range(-wanderRadius.value, wanderRadius.value));
+			wanderTarget += agent.transform.position;
 
 			navMeshAgent.SetDestination(wanderTarget);
 
