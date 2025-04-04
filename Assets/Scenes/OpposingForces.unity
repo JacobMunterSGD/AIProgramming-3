@@ -667,7 +667,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 20, y: 1, z: 20}
+  m_LocalScale: {x: 40, y: 1, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 361186711}
@@ -1401,7 +1401,7 @@ Transform:
   m_GameObject: {fileID: 1034968424}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.91, y: 0, z: 3.29}
+  m_LocalPosition: {x: 5.55, y: 0, z: 11.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1459,18 +1459,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":385.0,"y":132.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"0"},{"_position":{"x":230.0,"y":256.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"1"},{"_position":{"x":110.0,"y":349.0},"_comment":"player
-    is in range","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"2"},{"_position":{"x":321.0,"y":352.0},"_comment":"run
-    from player","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_position":{"x":546.0,"y":260.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"4"},{"_position":{"x":478.0,"y":364.0},"_comment":"big
-    blob is in range","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"5"},{"_position":{"x":640.0,"y":363.0},"_comment":"move
+  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":385.0,"y":132.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"0"},{"_position":{"x":230.0,"y":256.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"1"},{"_condition":{"$type":"NodeCanvas.Tasks.Conditions.IsTargetInRangeCT"},"_position":{"x":66.0,"y":367.0},"_comment":"player
+    is in range","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"2"},{"_action":{"$type":"NodeCanvas.Tasks.Actions.RunAwayAT"},"_position":{"x":283.0,"y":366.0},"_comment":"run
+    from player","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_position":{"x":546.0,"y":260.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"4"},{"_condition":{"$type":"NodeCanvas.Tasks.Conditions.IsTargetInRangeCT"},"_position":{"x":442.0,"y":363.0},"_comment":"big
+    blob is in range","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"5"},{"_action":{"targetTransform":{},"timeBetweenGettingNewDestination":{},"$type":"NodeCanvas.Tasks.Actions.ChaseAT"},"_position":{"x":666.0,"y":352.0},"_comment":"move
     to big blob","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"6"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
   _boundGraphObjectReferences: []
   _boundGraphSource:
     _version: 3.31
     _category: 
     _comments: 
-    _translation: {x: 98, y: 105}
-    _zoomFactor: 0.78081745
+    _translation: {x: 443.95627, y: 18.812061}
+    _zoomFactor: 0.96947336
   _firstActivation: 0
   _enableAction: 0
   _disableAction: 0
@@ -1752,13 +1752,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460779081}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.3535534, y: -0.61237246, z: 0.3535534, w: 0.61237246}
+  m_LocalPosition: {x: 21.751976, y: 26.07882, z: -2.5221384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: -90, z: 0}
 --- !u!1 &1504750690
 GameObject:
   m_ObjectHideFlags: 0
@@ -2221,7 +2221,7 @@ Transform:
   m_GameObject: {fileID: 2043208917}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.19, y: 0, z: -4.64}
+  m_LocalPosition: {x: -9.64, y: 0, z: -8.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2279,21 +2279,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":367.0,"y":128.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"0"},{"_position":{"x":-7.84198,"y":260.2135},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"1"},{"_position":{"x":-93.84198,"y":352.2135},"_comment":"has
-    been stunned?","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"2"},{"_position":{"x":30.15802,"y":353.2135},"_comment":"wait
-    three seconds","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_color":{"r":0.7490196,"g":0.4980392,"b":1.0,"a":1.0},"_position":{"x":326.0444,"y":250.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"4"},{"_position":{"x":197.4515,"y":353.0},"_comment":"Target
-    is in range","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"5"},{"_position":{"x":401.7343,"y":357.8177},"_comment":"three
-    seconds have elapsed when target has been in range","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"6"},{"_position":{"x":513.2376,"y":361.7114},"_comment":"Shoot
-    at target","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"7"},{"_color":{"r":0.7490196,"g":0.4980392,"b":1.0,"a":1.0},"_position":{"x":706.0566,"y":244.4275},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"8"},{"_position":{"x":657.2371,"y":366.1321},"_comment":"target
-    is not in attacking range","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"9"},{"_position":{"x":806.291,"y":377.1361},"_comment":"wander","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"10"},{"_position":{"x":295.4321,"y":356.062},"_comment":"move
-    to target","$type":"NodeCanvas.BehaviourTrees.ActionNode"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"7"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"8"},"_targetNode":{"$ref":"9"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"8"},"_targetNode":{"$ref":"10"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
+  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":367.0,"y":128.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"0"},{"dynamic":true,"_position":{"x":102.8528,"y":259.7438},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"1"},{"_condition":{"$type":"NodeCanvas.Tasks.Conditions.IsStunnedCT"},"_position":{"x":-67.14719,"y":364.7438},"_comment":"has
+    been stunned?","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"2"},{"_action":{"$type":"NodeCanvas.Tasks.Actions.StunRecoverAT"},"_position":{"x":71.69482,"y":367.5303},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_action":{"waitTime":{"_value":3.0},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":216.8528,"y":369.7438},"_comment":"wait
+    three seconds","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"4"},{"dynamic":true,"_position":{"x":599.6384,"y":234.17},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"5"},{"_condition":{"$type":"NodeCanvas.Tasks.Conditions.IsTargetInRangeCT"},"_position":{"x":334.0455,"y":364.17},"_comment":"Target
+    is in range","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"6"},{"_action":{"targetTransform":{},"timeBetweenGettingNewDestination":{},"$type":"NodeCanvas.Tasks.Actions.ChaseAT"},"_position":{"x":517.0261,"y":364.2321},"_comment":"move
+    to target","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"7"},{"_condition":{"$type":"NodeCanvas.Tasks.Conditions.TimerElapsedCT"},"_position":{"x":631.3283,"y":361.9877},"_comment":"three
+    seconds have elapsed when target has been in range","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"8"},{"_action":{"$type":"NodeCanvas.Tasks.Actions.BlobShootAT"},"_position":{"x":796.502,"y":362.5406},"_comment":"Shoot
+    at target","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"9"},{"_position":{"x":1062.651,"y":247.5975},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"10"},{"_condition":{"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.IsTargetInRangeCT"},"_position":{"x":979.8311,"y":354.3022},"_comment":"target
+    is not in attacking range","$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"11"},{"_action":{"wanderRadius":{},"$type":"NodeCanvas.Tasks.Actions.WanderAT"},"_position":{"x":1183.885,"y":355.3062},"_comment":"wander","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"12"},{"_condition":{"$type":"NodeCanvas.Tasks.Conditions.CheckCollidedTagCT"},"_position":{"x":-631.5259,"y":363.0209},"_comment":"has
+    collided with small blob","$type":"NodeCanvas.BehaviourTrees.ConditionNode"},{"_action":{"$type":"NodeCanvas.Tasks.Actions.DestroyGameObjectAT"},"_position":{"x":-439.1797,"y":366.4859},"_comment":"destroy
+    small blob","$type":"NodeCanvas.BehaviourTrees.ActionNode"},{"_action":{"$type":"NodeCanvas.Tasks.Actions.IncreaseSizeAT"},"_position":{"x":-246.897,"y":366.3647},"_comment":"make
+    blob bigger","$type":"NodeCanvas.BehaviourTrees.ActionNode"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"10"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"7"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"9"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"10"},"_targetNode":{"$ref":"11"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"10"},"_targetNode":{"$ref":"12"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
   _boundGraphObjectReferences: []
   _boundGraphSource:
     _version: 3.31
     _category: 
     _comments: 
-    _translation: {x: 114, y: 6}
-    _zoomFactor: 0.75016063
+    _translation: {x: 413, y: 170}
+    _zoomFactor: 0.6117988
   _firstActivation: 0
   _enableAction: 0
   _disableAction: 0
