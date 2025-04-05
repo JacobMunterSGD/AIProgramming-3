@@ -1,37 +1,60 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
-
+using UnityEditor.UIElements;
+using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions {
 
 	public class BlobShootAT : ActionTask {
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
+		public BBParameter<float> blobRadius;
+		public BBParameter<GameObject> blobBody;
+		public float shrinkTelegraphPercentage;
+
+		public Color shrunkenColor;
+		Color startColor;
+
+		public float timeToShrink;
+		public float timeToExpand;
+
+		float originalRadius;
+
 		protected override string OnInit() {
+
+			blobRadius.value = blobBody.value.transform.localScale.x;
+			startColor = blobBody.value.GetComponent<MeshRenderer>().material.color;
+
 			return null;
 		}
-
-		//This is called once each time the task is enabled.
-		//Call EndAction() to mark the action as finished, either in success or failure.
-		//EndAction can be called from anywhere.
+	
 		protected override void OnExecute() {
-			EndAction(true);
+
+			originalRadius = blobRadius.value;
+			ShrinkTelegraph();
+			
+
+			//EndAction(true);
 		}
 
-		//Called once per frame while the action is active.
-		protected override void OnUpdate() {
-			
+		void ShrinkTelegraph()
+		{
+			LeanTween.value(agent.gameObject, blobRadius.value, blobRadius.value * shrinkTelegraphPercentage, timeToShrink).setOnUpdate(UpdateBlobSize).setOnComplete(StartShoot).setEaseInOutCubic();
+			LeanTween.color(blobBody.value, shrunkenColor, timeToShrink).setEaseOutCubic();
 		}
 
-		//Called when the task is disabled.
-		protected override void OnStop() {
-			
+		void StartShoot()
+		{
+			// shoot thing
+
+			// animation
+			LeanTween.value(agent.gameObject, blobRadius.value, originalRadius, timeToExpand).setOnUpdate(UpdateBlobSize).setEaseOutElastic();
+			LeanTween.color(blobBody.value, startColor, timeToExpand).setEaseOutElastic();
 		}
 
-		//Called when the task is paused.
-		protected override void OnPause() {
-			
+		void UpdateBlobSize(float radius)
+		{
+			blobRadius.value = radius;
+			blobBody.value.transform.localScale = new Vector3(blobRadius.value, blobRadius.value, blobRadius.value);
 		}
 	}
 }
