@@ -2283,7 +2283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":367.0,"y":128.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"0"},{"dynamic":true,"_position":{"x":599.6384,"y":234.17},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"1"},{"_action":{"waitTime":{"_value":3.0},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":322.8528,"y":337.7438},"_comment":"wait
+  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":367.0,"y":128.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"0"},{"dynamic":true,"_position":{"x":599.6384,"y":234.17},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"1"},{"_action":{"waitTime":{"_value":1.5},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":322.8528,"y":337.7438},"_comment":"wait
     three seconds","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"2"},{"_action":{"blobRadius":{"_name":"blobRadius","_targetVariableID":"8d49ce2e-e6dd-4152-b4ea-09d3a2cebbb5"},"blobBody":{"_value":1},"shrinkTelegraphPercentage":0.8,"shrunkenColor":{"r":0.05980776,"g":0.3146386,"b":0.6037736},"timeToShrink":2.0,"timeToExpand":1.0,"$type":"NodeCanvas.Tasks.Actions.BlobShootAT"},"_position":{"x":407.502,"y":352.5406},"_comment":"Shoot
     at target","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_action":{"targetTransform":{},"timeBetweenGettingNewDestination":{},"$type":"NodeCanvas.Tasks.Actions.ChaseAT"},"_position":{"x":524.0261,"y":364.2321},"_comment":"move
     to target","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"4"},{"_condition":{"$type":"NodeCanvas.Tasks.Conditions.IsTargetInRangeCT"},"_position":{"x":544.0455,"y":491.17},"_comment":"Target
@@ -2302,7 +2302,7 @@ MonoBehaviour:
     _version: 3.31
     _category: 
     _comments: 
-    _translation: {x: 128, y: -45}
+    _translation: {x: 206, y: -3}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0
