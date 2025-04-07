@@ -1,31 +1,53 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
-
+using UnityEngine;
 
 namespace NodeCanvas.Tasks.Conditions {
 
 	public class IsTargetInRangeCT : ConditionTask {
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit(){
+		public BBParameter<Transform> currentTarget;
+
+        public BBParameter<float> distanceToDetect;
+
+        public LayerMask detectionLayerMask;
+
+        protected override string OnInit(){
 			return null;
 		}
 
-		//Called whenever the condition gets enabled.
-		protected override void OnEnable() {
-			
-		}
-
-		//Called whenever the condition gets disabled.
-		protected override void OnDisable() {
-			
-		}
-
-		//Called once per frame while the condition is active.
-		//Return whether the condition is success or failure.
 		protected override bool OnCheck() {
-			return true;
+
+            int maxColliders = 10;
+            Collider[] hitColliders = new Collider[maxColliders];
+            int numColliders = Physics.OverlapSphereNonAlloc(agent.transform.position, distanceToDetect.value, hitColliders, detectionLayerMask);
+
+            Collider closestCollider = hitColliders[0];
+
+            if (numColliders == 0) return false;
+
+            for (int i = 0; i < numColliders; i++)
+            {
+                if (Vector3.Distance(closestCollider.transform.position, agent.transform.position) > Vector3.Distance(hitColliders[i].transform.position, agent.transform.position))
+                {
+                    closestCollider = hitColliders[i];
+                }
+            }
+
+            //Debug.Log(targetTransform.value != closestCollider.transform.position);
+
+            if (currentTarget.value.position != closestCollider.transform.position)
+            {
+                Debug.Log(closestCollider.transform.position);
+                currentTarget.value = closestCollider.transform;
+                return true;
+            }
+            else
+            {
+                currentTarget.value = null;
+                return false;
+            }
+
 		}
 	}
 }
