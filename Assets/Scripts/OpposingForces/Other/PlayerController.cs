@@ -1,3 +1,4 @@
+using NodeCanvas.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,11 +30,13 @@ public class PlayerController : MonoBehaviour
 
 	void Stun()
 	{
-		RaycastHit hit;
-		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, stunRange, stunLayerMask))
+		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, stunRange, stunLayerMask))
 		{
 			Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow); // remove later
-
+			if (hit.transform.parent.gameObject.TryGetComponent<Blackboard>(out Blackboard hitBlackboard))
+			{
+				hitBlackboard.SetVariableValue("isStunned", true);
+			}
 		}
 	}
 

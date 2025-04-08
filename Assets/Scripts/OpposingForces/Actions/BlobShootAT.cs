@@ -9,7 +9,7 @@ namespace NodeCanvas.Tasks.Actions {
 
 	public class BlobShootAT : ActionTask {
 
-		public BBParameter<float> blobRadius;
+		float blobRadius;
 		public BBParameter<GameObject> blobBody;
 		public float shrinkTelegraphPercentage;
 
@@ -21,11 +21,9 @@ namespace NodeCanvas.Tasks.Actions {
 
 		float originalRadius;
 
-		public NavMeshAgent navMeshAgent;
-
 		protected override string OnInit() {
 
-			blobRadius.value = blobBody.value.transform.localScale.x;
+			blobRadius = blobBody.value.transform.localScale.x;
 			startColor = blobBody.value.GetComponent<MeshRenderer>().material.color;
 
 			return null;
@@ -33,9 +31,7 @@ namespace NodeCanvas.Tasks.Actions {
 	
 		protected override void OnExecute() {
 
-			navMeshAgent.ResetPath();
-
-			originalRadius = blobRadius.value;
+			originalRadius = blobRadius;
 			ShrinkTelegraph();
 			
 
@@ -44,7 +40,7 @@ namespace NodeCanvas.Tasks.Actions {
 
 		void ShrinkTelegraph()
 		{
-			LeanTween.value(agent.gameObject, blobRadius.value, blobRadius.value * shrinkTelegraphPercentage, timeToShrink).setOnUpdate(UpdateBlobSize).setOnComplete(StartShoot).setEaseInOutCubic();
+			LeanTween.value(agent.gameObject, blobRadius, blobRadius * shrinkTelegraphPercentage, timeToShrink).setOnUpdate(UpdateBlobSize).setOnComplete(StartShoot).setEaseInOutCubic();
 			LeanTween.color(blobBody.value, shrunkenColor, timeToShrink).setEaseOutCubic();
 		}
 
@@ -53,14 +49,14 @@ namespace NodeCanvas.Tasks.Actions {
 			// shoot thing
 
 			// animation
-			LeanTween.value(agent.gameObject, blobRadius.value, originalRadius, timeToExpand).setOnUpdate(UpdateBlobSize).setEaseOutElastic().setOnComplete(EndActionTrue);
+			LeanTween.value(agent.gameObject, blobRadius, originalRadius, timeToExpand).setOnUpdate(UpdateBlobSize).setEaseOutElastic().setOnComplete(EndActionTrue);
 			LeanTween.color(blobBody.value, startColor, timeToExpand).setEaseOutElastic();
 		}
 
 		void UpdateBlobSize(float radius)
 		{
-			blobRadius.value = radius;
-			blobBody.value.transform.localScale = new Vector3(blobRadius.value, blobRadius.value, blobRadius.value);
+			blobRadius = radius;
+			blobBody.value.transform.localScale = new Vector3(blobRadius, blobRadius, blobRadius);
 		}
 
 		void EndActionTrue()

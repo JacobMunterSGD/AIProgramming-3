@@ -7,7 +7,7 @@ namespace NodeCanvas.Tasks.Actions {
 
 	public class ChaseAT : ActionTask {
 
-		public BBParameter<Vector3> targetTransform;
+		public BBParameter<Transform> targetTransform;
 		public NavMeshAgent navMeshAgent;
 
         public BBParameter<float> timeBetweenGettingNewDestination;
@@ -31,7 +31,9 @@ namespace NodeCanvas.Tasks.Actions {
 
             if (Time.time - timeWhenDestinationWasLastSet > timeBetweenGettingNewDestination.value) GetNewDestination();
 
-            if (Vector3.Distance(agent.transform.position, targetTransform.value) < 1)
+            if (targetTransform.value == null) return;
+
+            if (Vector3.Distance(agent.transform.position, targetTransform.value.position) < 1)
 			{
                 EndAction(true);
             }
@@ -47,7 +49,7 @@ namespace NodeCanvas.Tasks.Actions {
             }
             else
             {
-                navMeshAgent.SetDestination(targetTransform.value);
+                navMeshAgent.SetDestination(targetTransform.value.position);
             }
 
             timeWhenDestinationWasLastSet = Time.time;

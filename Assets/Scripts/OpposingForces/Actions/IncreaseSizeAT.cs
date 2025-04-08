@@ -1,37 +1,37 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using UnityEngine;
 
 
 namespace NodeCanvas.Tasks.Actions {
 
 	public class IncreaseSizeAT : ActionTask {
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit() {
-			return null;
+		float blobRadius;
+		public BBParameter<GameObject> body;
+
+		public BBParameter<float> increaseSizeAmount;
+
+		public float TimeToGrow;
+		
+		protected override void OnExecute() {
+
+			blobRadius = body.value.transform.localScale.x;
+
+			LeanTween.value(agent.gameObject, blobRadius, blobRadius + increaseSizeAmount.value, TimeToGrow).setOnUpdate(UpdateBlobSize).setOnComplete(EndActionTrue).setEaseOutElastic();
 		}
 
-		//This is called once each time the task is enabled.
-		//Call EndAction() to mark the action as finished, either in success or failure.
-		//EndAction can be called from anywhere.
-		protected override void OnExecute() {
+		void EndActionTrue()
+		{
 			EndAction(true);
 		}
 
-		//Called once per frame while the action is active.
-		protected override void OnUpdate() {
-			
+		void UpdateBlobSize(float radius)
+		{
+			blobRadius = radius;
+			body.value.transform.localScale = new Vector3(blobRadius, blobRadius, blobRadius);
 		}
 
-		//Called when the task is disabled.
-		protected override void OnStop() {
-			
-		}
 
-		//Called when the task is paused.
-		protected override void OnPause() {
-			
-		}
 	}
 }

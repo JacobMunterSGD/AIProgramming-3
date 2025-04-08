@@ -6,7 +6,6 @@ namespace NodeCanvas.Tasks.Actions {
 
 	public class StunRecoverAT : ActionTask {
 
-
 		protected override string OnInit() {
 			return null;
 		}
