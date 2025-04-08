@@ -18,36 +18,35 @@ namespace NodeCanvas.Tasks.Conditions {
 
 		protected override bool OnCheck() {
 
-            int maxColliders = 10;
+			int maxColliders = 10;
             Collider[] hitColliders = new Collider[maxColliders];
             int numColliders = Physics.OverlapSphereNonAlloc(agent.transform.position, distanceToDetect.value, hitColliders, detectionLayerMask);
 
             Collider closestCollider = hitColliders[0];
 
-            if (numColliders == 0) return false;
+            if (numColliders == 0)
+            {
+				currentTarget.value = null;
+                return false;
+			}
 
             for (int i = 0; i < numColliders; i++)
             {
                 if (Vector3.Distance(closestCollider.transform.position, agent.transform.position) > Vector3.Distance(hitColliders[i].transform.position, agent.transform.position))
                 {
                     closestCollider = hitColliders[i];
+                    
                 }
-            }
-
-            //Debug.Log(targetTransform.value != closestCollider.transform.position);
-
-            if (currentTarget.value.position != closestCollider.transform.position)
+			}
+            
+            if (currentTarget.value != closestCollider.transform)
             {
-                Debug.Log(closestCollider.transform.position);
                 currentTarget.value = closestCollider.transform;
-                return true;
-            }
-            else
-            {
-                currentTarget.value = null;
-                return false;
             }
 
-		}
+            if (numColliders != 0) return true;
+            else return false;
+
+        }
 	}
 }

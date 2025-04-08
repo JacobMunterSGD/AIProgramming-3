@@ -12,6 +12,8 @@ namespace NodeCanvas.Tasks.Actions {
 
         public BBParameter<float> timeBetweenGettingNewDestination;
         float timeWhenDestinationWasLastSet;
+
+        public BBParameter<float> chaseMoveSpeed;
        
 
 		protected override string OnInit() {
@@ -20,6 +22,7 @@ namespace NodeCanvas.Tasks.Actions {
 
 		protected override void OnExecute() {
 
+            navMeshAgent.speed = chaseMoveSpeed.value;
             GetNewDestination();
 
         }

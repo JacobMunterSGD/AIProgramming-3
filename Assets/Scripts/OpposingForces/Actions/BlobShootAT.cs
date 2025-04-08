@@ -2,6 +2,8 @@ using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UI;
 
 namespace NodeCanvas.Tasks.Actions {
 
@@ -19,6 +21,8 @@ namespace NodeCanvas.Tasks.Actions {
 
 		float originalRadius;
 
+		public NavMeshAgent navMeshAgent;
+
 		protected override string OnInit() {
 
 			blobRadius.value = blobBody.value.transform.localScale.x;
@@ -28,6 +32,8 @@ namespace NodeCanvas.Tasks.Actions {
 		}
 	
 		protected override void OnExecute() {
+
+			navMeshAgent.ResetPath();
 
 			originalRadius = blobRadius.value;
 			ShrinkTelegraph();
@@ -47,7 +53,7 @@ namespace NodeCanvas.Tasks.Actions {
 			// shoot thing
 
 			// animation
-			LeanTween.value(agent.gameObject, blobRadius.value, originalRadius, timeToExpand).setOnUpdate(UpdateBlobSize).setEaseOutElastic();
+			LeanTween.value(agent.gameObject, blobRadius.value, originalRadius, timeToExpand).setOnUpdate(UpdateBlobSize).setEaseOutElastic().setOnComplete(EndActionTrue);
 			LeanTween.color(blobBody.value, startColor, timeToExpand).setEaseOutElastic();
 		}
 
@@ -55,6 +61,11 @@ namespace NodeCanvas.Tasks.Actions {
 		{
 			blobRadius.value = radius;
 			blobBody.value.transform.localScale = new Vector3(blobRadius.value, blobRadius.value, blobRadius.value);
+		}
+
+		void EndActionTrue()
+		{
+			EndAction(true);
 		}
 	}
 }

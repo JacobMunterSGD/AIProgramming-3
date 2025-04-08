@@ -1,28 +1,23 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
-
+using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions {
 
-	public class StunRecoverAT : ActionTask {
+	public class SetVarToCurrentTimeAT : ActionTask {
 
+		public BBParameter<float> currentTime;
 
 		protected override string OnInit() {
 			return null;
 		}
 
-
 		protected override void OnExecute() {
 
-			// animation to be stunned
+			currentTime.value = Time.time;
 
 			EndAction(true);
 		}
-
-		protected override void OnUpdate() {
-			
-		}
-
 
 	}
 }
