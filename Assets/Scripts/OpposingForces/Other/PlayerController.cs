@@ -1,4 +1,5 @@
 using NodeCanvas.Framework;
+using NodeCanvas.Tasks.Conditions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,17 +16,28 @@ public class PlayerController : MonoBehaviour
 
 	public float stunRange;
 
+	bool isStunned;
+	float timeWhenLastStunned;
+
+	public float playerHasBeenStunnedCooldown;
+
     void Start()
     {
-        TryGetComponent<CharacterController>(out characterController);
+		isStunned = false;
+		TryGetComponent<CharacterController>(out characterController);
     }
 
     void Update()
     {
-        MovementInputs();
-		LookInput();
+		if (!isStunned)
+		{
+			MovementInputs();
+			LookInput();
 
-		if (Input.GetKeyDown(KeyCode.Space)) Stun();
+			if (Input.GetKeyDown(KeyCode.Space)) Stun();
+		}
+
+		if (isStunned && Time.time - timeWhenLastStunned > playerHasBeenStunnedCooldown) isStunned = false;
 	}
 
 	void Stun()
@@ -78,5 +90,11 @@ public class PlayerController : MonoBehaviour
 		direction = direction.normalized;
 
 		characterController.Move(direction * speed * Time.deltaTime);
+	}
+
+	public void GetStunned()
+	{
+		isStunned = true;
+		timeWhenLastStunned = Time.time;
 	}
 }

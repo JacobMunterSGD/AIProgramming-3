@@ -3,7 +3,6 @@ using ParadoxNotion.Design;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 
 namespace NodeCanvas.Tasks.Actions {
 
@@ -13,6 +12,8 @@ namespace NodeCanvas.Tasks.Actions {
 		public BBParameter<GameObject> blobBody;
 		public float shrinkTelegraphPercentage;
 
+		public BBParameter<GameObject> currentTarget;
+
 		public Color shrunkenColor;
 		Color startColor;
 
@@ -20,6 +21,9 @@ namespace NodeCanvas.Tasks.Actions {
 		public float timeToExpand;
 
 		float originalRadius;
+
+		public BBParameter<GameObject> projectile;
+		public float projectileLaunchForce;
 
 		protected override string OnInit() {
 
@@ -47,6 +51,11 @@ namespace NodeCanvas.Tasks.Actions {
 		void StartShoot()
 		{
 			// shoot thing
+			GameObject _projectile = GameObject.Instantiate(projectile.value, agent.transform.position, Quaternion.identity);
+			Vector3 launchDirection = (currentTarget.value.transform.position - agent.transform.position).normalized;
+			launchDirection = (launchDirection + Vector3.up/3).normalized;
+			_projectile.GetComponent<Rigidbody>().AddForce(launchDirection * projectileLaunchForce, ForceMode.Impulse);
+			GameObject.Destroy(_projectile, 3);
 
 			// animation
 			LeanTween.value(agent.gameObject, blobRadius, originalRadius, timeToExpand).setOnUpdate(UpdateBlobSize).setEaseOutElastic().setOnComplete(EndActionTrue);
