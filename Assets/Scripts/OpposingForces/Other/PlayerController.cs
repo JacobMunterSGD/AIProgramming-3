@@ -3,6 +3,7 @@ using NodeCanvas.Tasks.Conditions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerController : MonoBehaviour
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
 
 	public LayerMask stunLayerMask;
+	public LayerMask playerDeathLayer;
 
 	public float stunRange;
 
@@ -34,7 +36,7 @@ public class PlayerController : MonoBehaviour
 			MovementInputs();
 			LookInput();
 
-			if (Input.GetKeyDown(KeyCode.Space)) Stun();
+			if (Input.GetKeyDown(KeyCode.Mouse0)) Stun();
 		}
 
 		if (isStunned && Time.time - timeWhenLastStunned > playerHasBeenStunnedCooldown) isStunned = false;
@@ -69,22 +71,18 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKey(KeyCode.W))
 		{
 			direction += Vector3.forward;
-			//characterController.Move(speed * Vector3.forward * Time.deltaTime);
 		}
 		if (Input.GetKey(KeyCode.S))
 		{
 			direction += -Vector3.forward;
-			//characterController.Move(speed * -Vector3.forward * Time.deltaTime);
 		}
 		if (Input.GetKey(KeyCode.A))
 		{
 			direction += -Vector3.right;
-			//characterController.Move(speed * -Vector3.right * Time.deltaTime);
 		}
 		if (Input.GetKey(KeyCode.D))
 		{
 			direction += Vector3.right;
-			//characterController.Move(speed * Vector3.right * Time.deltaTime);
 		}
 
 		direction = direction.normalized;
@@ -96,5 +94,16 @@ public class PlayerController : MonoBehaviour
 	{
 		isStunned = true;
 		timeWhenLastStunned = Time.time;
+	}
+
+	// if collides with enemy, restart the game
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.transform.parent.tag == "Enemy")
+		{
+
+			Scene scene = SceneManager.GetActiveScene();
+			SceneManager.LoadScene(scene.name);
+		}
 	}
 }

@@ -2095,6 +2095,9 @@ MonoBehaviour:
   stunLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  playerDeathLayer:
+    serializedVersion: 2
+    m_Bits: 64
   stunRange: 10
   playerHasBeenStunnedCooldown: 1.5
 --- !u!1 &1652253995
@@ -2857,8 +2860,8 @@ MonoBehaviour:
     _version: 3.31
     _category: 
     _comments: 
-    _translation: {x: -219, y: -250}
-    _zoomFactor: 1
+    _translation: {x: 108.36512, y: 139.5516}
+    _zoomFactor: 0.5494763
   _firstActivation: 0
   _enableAction: 0
   _disableAction: 0
