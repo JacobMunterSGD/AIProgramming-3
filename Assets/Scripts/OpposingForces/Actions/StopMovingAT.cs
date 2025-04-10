@@ -1,6 +1,7 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEngine.AI;
+using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions {
 
@@ -17,7 +18,6 @@ namespace NodeCanvas.Tasks.Actions {
 
 		protected override void OnExecute()
 		{
-
 			if (navMeshAgent != null) navMeshAgent.ResetPath();
 
 			EndAction(true);

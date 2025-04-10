@@ -13,10 +13,8 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
 
-	public LayerMask stunLayerMask;
 	public LayerMask playerDeathLayer;
 
-	public float stunRange;
 
 	bool isStunned;
 	float timeWhenLastStunned;
@@ -36,23 +34,13 @@ public class PlayerController : MonoBehaviour
 			MovementInputs();
 			LookInput();
 
-			if (Input.GetKeyDown(KeyCode.Mouse0)) Stun();
+			
 		}
 
 		if (isStunned && Time.time - timeWhenLastStunned > playerHasBeenStunnedCooldown) isStunned = false;
 	}
 
-	void Stun()
-	{
-		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, stunRange, stunLayerMask))
-		{
-			Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow); // remove later
-			if (hit.transform.parent.gameObject.TryGetComponent<Blackboard>(out Blackboard hitBlackboard))
-			{
-				hitBlackboard.SetVariableValue("isStunned", true);
-			}
-		}
-	}
+	
 
 	void LookInput()
 	{
@@ -96,14 +84,12 @@ public class PlayerController : MonoBehaviour
 		timeWhenLastStunned = Time.time;
 	}
 
-	// if collides with enemy, restart the game
+	 //if collides with enemy, stun player
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.transform.parent.tag == "Enemy")
 		{
-
-			Scene scene = SceneManager.GetActiveScene();
-			SceneManager.LoadScene(scene.name);
-		}
+			Destroy(gameObject);
+        }
 	}
 }

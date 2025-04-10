@@ -2,6 +2,7 @@ using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 namespace NodeCanvas.Tasks.Conditions {
@@ -20,12 +21,12 @@ namespace NodeCanvas.Tasks.Conditions {
 
 		protected override bool OnCheck() {
 
-			blobRadius = body.value.transform.localScale.x;
+			blobRadius = body.value.transform.localScale.x/2;
+
 			Collider[] hitColliders = Physics.OverlapSphere(agent.transform.position, blobRadius, smallBlobLayerMask);
 
-			foreach (Collider c in hitColliders)
+            foreach (Collider c in hitColliders)
 			{
-				Debug.Log("theres something here!");
 				absorbedSmallBlob.value = c.gameObject;
 			}
 
