@@ -49,14 +49,17 @@ public class PlayerStun : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, stunRange, stunLayerMask))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow); // remove later
-            if (hit.transform.parent.gameObject.TryGetComponent<Blackboard>(out Blackboard hitBlackboard))
+
+            if (hit.transform.parent.gameObject.TryGetComponent<Generator>(out Generator generator))
             {
-                hitBlackboard.SetVariableValue("isStunned", true);                
+                generator.ChangePower(true);
 
+			}
+
+            if (hit.transform.parent.gameObject.TryGetComponent<Blackboard>(out Blackboard hitBlackboard)) // if it has a blackboard, stun it
+            {
+                hitBlackboard.SetVariableValue("isStunned", true);
             }
-
-            //LeanTween.value(stunVisual, 0, 1, 1).setOnUpdate(UpdateColor).setOnComplete(MakeVisualTransparent);
         }
     }
 
