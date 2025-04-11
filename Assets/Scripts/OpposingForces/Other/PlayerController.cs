@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
 
 	public LayerMask playerDeathLayer;
 
+	public Transform hasBeenStunnedVisual;
+	List<MeshRenderer> stunnedBalls = new();
+	public float ballSpinSpeed;
 
 	bool isStunned;
 	float timeWhenLastStunned;
@@ -25,22 +28,32 @@ public class PlayerController : MonoBehaviour
     {
 		isStunned = false;
 		TryGetComponent<CharacterController>(out characterController);
-    }
+
+		foreach (MeshRenderer mr in hasBeenStunnedVisual.GetComponentsInChildren<MeshRenderer>())
+		{
+			print(mr);
+			stunnedBalls.Add(mr);
+		}
+
+		UpdateOpacity(0);
+	}
 
     void Update()
     {
 		if (!isStunned)
 		{
 			MovementInputs();
-			LookInput();
-
-			
+			LookInput();			
 		}
 
-		if (isStunned && Time.time - timeWhenLastStunned > playerHasBeenStunnedCooldown) isStunned = false;
-	}
+		if (isStunned && Time.time - timeWhenLastStunned > playerHasBeenStunnedCooldown)
+		{
+			isStunned = false;
+			LeanTween.value(1, 0, .3f).setOnUpdate(UpdateOpacity);
+		}
 
-	
+		HasBeenStunnedVisualRotate();
+	}
 
 	void LookInput()
 	{
@@ -82,6 +95,20 @@ public class PlayerController : MonoBehaviour
 	{
 		isStunned = true;
 		timeWhenLastStunned = Time.time;
+		LeanTween.value(0, 1, .3f).setOnUpdate(UpdateOpacity);
+	}
+	void HasBeenStunnedVisualRotate()
+	{
+		hasBeenStunnedVisual.position = transform.position + Vector3.up * 3;
+		hasBeenStunnedVisual.Rotate(new Vector3(0, ballSpinSpeed, 0) * Time.deltaTime);
+	}
+
+	void UpdateOpacity(float alpha)
+	{
+		foreach(MeshRenderer mr in stunnedBalls)
+		{
+			mr.material.color = new Color(mr.material.color.r, mr.material.color.g, mr.material.color.b, alpha);
+		}
 	}
 
 	 //if collides with enemy, stun player
@@ -90,6 +117,7 @@ public class PlayerController : MonoBehaviour
 		if (other.gameObject.transform.parent.tag == "Enemy")
 		{
 			Destroy(gameObject);
+			Destroy(hasBeenStunnedVisual.gameObject);
         }
 	}
 }
