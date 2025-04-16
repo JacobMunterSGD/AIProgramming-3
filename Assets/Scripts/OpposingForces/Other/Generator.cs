@@ -17,9 +17,16 @@ public class Generator : MonoBehaviour
 
 	public void ChangePower(bool on)
 	{
+		if (!isPoweredOn)
+		{
+			GeneratorManager.Instance.UpdateGeneratorText(-1);
+		}
 		isPoweredOn = on;
 		GeneratorManager.EndGameCheck();
-		if (on) boxMeshRenderer.material.color = poweredOnColour;
+		if (on)
+		{
+			boxMeshRenderer.material.color = poweredOnColour;			
+		}
 	}
 
 }
