@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
 
 		foreach (MeshRenderer mr in hasBeenStunnedVisual.GetComponentsInChildren<MeshRenderer>())
 		{
-			print(mr);
 			stunnedBalls.Add(mr);
 		}
 

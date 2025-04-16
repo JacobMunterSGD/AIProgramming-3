@@ -22,7 +22,7 @@ public class Generator : MonoBehaviour
 			GeneratorManager.Instance.UpdateGeneratorText(-1);
 		}
 		isPoweredOn = on;
-		GeneratorManager.EndGameCheck();
+		GeneratorManager.Instance.EndGameCheck();
 		if (on)
 		{
 			boxMeshRenderer.material.color = poweredOnColour;			

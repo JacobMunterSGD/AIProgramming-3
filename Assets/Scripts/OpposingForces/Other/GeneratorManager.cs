@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class GeneratorManager : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class GeneratorManager : MonoBehaviour
     public static GeneratorManager Instance;
 
     public TMP_Text generatorsLeftNumber;
+    public GameObject winText;
 
     int generatorsLeft = 0;
 
@@ -23,9 +26,10 @@ public class GeneratorManager : MonoBehaviour
 
         generatorsLeft = generators.Count();
 
+        winText.SetActive(false);
 		UpdateGeneratorText(0);
 	}
-    public static void EndGameCheck()
+    public void EndGameCheck()
     {
         bool endGame = true;
 
@@ -37,13 +41,26 @@ public class GeneratorManager : MonoBehaviour
         if (endGame == true)
         {
             print("you did it!");
-            // end game code
-        }
+			// end game code
+			StartCoroutine(EndGame());
+
+		}
     }
 
     public void UpdateGeneratorText(int changeBy)
     {
         generatorsLeft += changeBy;
 		generatorsLeftNumber.text = generatorsLeft.ToString();
+	}
+
+    public IEnumerator EndGame()
+    {
+        winText.SetActive(true);
+
+		yield return new WaitForSeconds(3);
+
+		Scene scene = SceneManager.GetActiveScene();
+		SceneManager.LoadScene(scene.name);
+
 	}
 }
